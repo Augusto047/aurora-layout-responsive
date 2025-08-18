@@ -2,7 +2,7 @@
 
 A responsive, multi‑section webpage built from scratch using **CSS Grid** and **Flexbox** — no frameworks, just modern, maintainable CSS.
 
-**Live Demo (GitHub Pages):** _Add your Pages URL here after publishing_
+**Live Demo (GitHub Pages):** [_Add your Pages URL here after publishing_](https://augusto047.github.io/aurora-layout-responsive/)
 
 ## Highlights
 - **Grid for macro layout** (main + sidebar + footer clusters)
