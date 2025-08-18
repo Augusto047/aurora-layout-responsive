@@ -1,0 +1,150 @@
+/* ======================================================================
+   Aurora Layout — CSS Flex & Grid Showcase
+   Submission stylesheet (English comments)
+   ====================================================================== */
+
+/* Root design tokens */
+:root {
+  --brand-1: #7C3AED;
+  --brand-2: #06B6D4;
+  --bg: #0b0b10;
+  --surface: #12121a;
+  --text: #e6e6f0;
+  --muted: #b3b3c2;
+  --accent: #f1f1ff;
+  --ring: #ffffff;
+
+  --radius: 16px;
+  --container: min(110ch, 92vw);
+
+  /* Fluid scale for typography and spacing */
+  --step--1: clamp(0.78rem, 0.70rem + 0.3vw, 0.92rem);
+  --step-0: clamp(0.95rem, 0.85rem + 0.5vw, 1.05rem);
+  --step-1: clamp(1.20rem, 1.00rem + 0.9vw, 1.35rem);
+  --step-2: clamp(1.55rem, 1.25rem + 1.2vw, 1.80rem);
+  --step-3: clamp(2.00rem, 1.50rem + 1.8vw, 2.40rem);
+}
+
+/* Global resets & base */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, sans-serif;
+  background: radial-gradient(1200px 800px at 10% 0%, #12121a, #0b0b10);
+  color: var(--text);
+  font-size: var(--step-0);
+  line-height: 1.6;
+}
+img { max-width: 100%; display: block; }
+a { color: #c9d8ff; text-decoration: none; }
+a:hover, a:focus { text-decoration: underline; }
+
+.skip-link {
+  position: absolute; inset-inline-start: 0; inset-block-start: 0;
+  background: var(--brand-2); color: #001015; padding: 0.5rem 0.75rem;
+  transform: translateY(-120%); transition: transform 0.2s ease;
+  z-index: 1000; border-bottom-right-radius: 8px; font-weight: 600;
+}
+.skip-link:focus { transform: translateY(0); }
+
+.container { width: var(--container); margin-inline: auto; padding-inline: 1rem; }
+
+/* Header — Flexbox for alignment */
+.site-header {
+  position: sticky; top: 0; backdrop-filter: blur(6px);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border-bottom: 1px solid #232330;
+  z-index: 500;
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.75rem 0;
+  flex-wrap: wrap;
+}
+.nav-list {
+  display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0;
+  flex-wrap: wrap;
+}
+.nav-list a { display: inline-block; padding: 0.5rem 0.75rem; border-radius: 999px; }
+.nav-list a:hover { background: #1a1a26; }
+
+/* Hero */
+.hero { padding-block: 4rem 3rem; }
+.hero-inner { text-align: center; }
+.hero h1 { font-size: var(--step-3); line-height: 1.1; margin: 0 0 0.75rem; }
+.lead { color: var(--muted); font-size: var(--step-1); max-width: 60ch; margin: 0 auto; }
+.hero-actions { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1.25rem; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block; padding: 0.65rem 1rem; border-radius: 999px;
+  background: #1a1a26; color: var(--accent); border: 1px solid #24243a;
+  font-weight: 600;
+}
+.btn.primary {
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  border: none; color: #001015;
+}
+.btn:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+/* Features — Flex cards that wrap */
+.features { padding-block: 2.5rem; }
+.feature-cards {
+  display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0;
+  flex-wrap: wrap; justify-content: center;
+}
+.card {
+  background: var(--surface); border: 1px solid #232330; border-radius: var(--radius);
+  padding: 1rem; flex: 1 1 240px; max-width: 360px;
+}
+.card h3 { margin-top: 0.25rem; margin-bottom: 0.25rem; font-size: var(--step-1); }
+.card p { margin: 0; color: var(--muted); }
+
+/* Main content — CSS Grid controls macro layout */
+.content-grid {
+  display: grid; gap: 1.25rem; align-items: start;
+  grid-template-columns: 1fr; /* mobile first */
+  padding-block: 2rem;
+}
+.content-grid .content, .content-grid .sidebar {
+  background: var(--surface); border: 1px solid #232330; border-radius: var(--radius); padding: 1rem;
+}
+.sidebar-links { list-style: none; margin: 0; padding: 0; }
+.sidebar-links li + li { margin-top: 0.35rem; }
+.tip { margin-top: 1rem; color: var(--muted); font-size: var(--step--1); }
+
+/* CTA — Flex for alignment */
+.cta { padding-block: 2.5rem; }
+.cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.cta-inner h2 { margin: 0; font-size: var(--step-2); }
+
+/* Footer — Grid clusters */
+.site-footer { border-top: 1px solid #232330; margin-top: 2rem; padding-top: 1rem; }
+.footer-grid {
+  display: grid; gap: 1rem;
+  grid-template-columns: 1fr;
+  padding-block: 1rem 0.5rem;
+}
+.site-footer h3 { margin: 0 0 0.25rem; font-size: 1rem; }
+.site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer li + li { margin-top: 0.25rem; }
+.legal { text-align: center; color: var(--muted); font-size: var(--step--1); margin: 0.5rem 0 1.25rem; }
+
+/* Breakpoints */
+@media (min-width: 48rem) {
+  .content-grid {
+    grid-template-columns: 2fr 1fr; /* article + sidebar */
+  }
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 64rem) {
+  .hero { padding-block: 5rem 3.25rem; }
+  .content-grid { gap: 1.5rem; }
+  .feature-cards { gap: 1.25rem; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

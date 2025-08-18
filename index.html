@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Responsive multi-section page using modern CSS Grid and Flexbox." />
+  <title>Aurora Layout — CSS Flex & Grid Showcase</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+  <!--
+    [EN] Submission version — Comments in English
+    Purpose: Demonstrate a clean, responsive layout using BOTH CSS Grid (2D) and Flexbox (1D).
+    Where Grid is used:
+      - .content-grid (main/aside two-column layout on wider screens)
+      - footer areas
+    Where Flex is used:
+      - Navigation bar alignment and wrapping
+      - Feature cards layout
+      - Call-to-action section
+    Responsive technique highlights:
+      - Fluid type via clamp()
+      - Relative units (rem, %), and logical properties
+      - Media queries for mobile / tablet / desktop breakpoints
+      - Reduced motion preferences respected
+  -->
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="Aurora Layout Home">
+        <img src="assets/logo.svg" alt="" width="160" height="40" />
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#demo">Demo</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="about" aria-labelledby="hero-title">
+    <div class="container hero-inner">
+      <h1 id="hero-title">Modern CSS Layouts, Done Right</h1>
+      <p class="lead">
+        A responsive showcase built with semantic HTML5, CSS Grid, and Flexbox — adapting gracefully from mobile to desktop.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#demo">See the Layout</a>
+        <a class="btn" href="#features">Explore Features</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features" aria-labelledby="features-title">
+    <div class="container">
+      <h2 id="features-title">Why this layout works</h2>
+      <ul class="feature-cards">
+        <li class="card">
+          <h3>CSS Grid</h3>
+          <p>Robust two‑dimensional control over main layout areas (content + sidebar + footer clusters).</p>
+        </li>
+        <li class="card">
+          <h3>Flexbox</h3>
+          <p>Perfect for single‑axis alignment — navigations, action rows, and responsive card groups.</p>
+        </li>
+        <li class="card">
+          <h3>Responsive by design</h3>
+          <p>Fluid type, relative spacing, and media queries for mobile, tablet, and desktop breakpoints.</p>
+        </li>
+        <li class="card">
+          <h3>Accessible & clean</h3>
+          <p>Semantic landmarks, focus states, color contrast, and reduced motion awareness.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <main id="main" class="container content-grid" aria-label="Main content">
+    <article id="demo" class="content">
+      <h2>Demo: Article Area</h2>
+      <p>
+        This area demonstrates the primary content column. On wider screens, it sits beside a sidebar using CSS Grid.
+        On narrow screens, the grid collapses into a single column for a smooth reading experience.
+      </p>
+      <p>
+        Resize your browser to watch the layout adapt: cards and navigation wrap using Flexbox, while this main section
+        and the sidebar reflow via Grid template changes.
+      </p>
+      <section>
+        <h3>Sample Subsection</h3>
+        <p>
+          Use this space to show a short article, a case study, or any content that benefits from a primary reading column.
+        </p>
+        <ul>
+          <li>Grid governs macro page structure.</li>
+          <li>Flex handles micro alignment and card wrapping.</li>
+          <li>Media queries tweak gaps, columns, and font sizes.</li>
+        </ul>
+      </section>
+    </article>
+
+    <aside class="sidebar" aria-label="Sidebar">
+      <h2>Sidebar</h2>
+      <nav aria-label="In-page">
+        <ul class="sidebar-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#demo">Demo</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="tip">
+        <strong>Tip:</strong> Keep sidebars concise on mobile; expand on larger screens.
+      </div>
+    </aside>
+  </main>
+
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="container cta-inner">
+      <h2 id="cta-title">Ready to build responsive layouts?</h2>
+      <p>Start with a solid Grid for structure, then polish details with Flexbox.</p>
+      <a class="btn primary" href="#contact">Get in touch</a>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="contact" role="contentinfo">
+    <div class="container footer-grid">
+      <section aria-label="Contact">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+258847423047">(+258) 84 742 3047</a></li>
+          <li><a href="mailto:mate.augusto.mz@gmail.com">mate.augusto.mz@gmail.com</a></li>
+        </ul>
+      </section>
+      <section aria-label="Attribution">
+        <h3>Project</h3>
+        <ul>
+          <li><a href="#about">Aurora Layout</a></li>
+          <li><a href="#features">CSS Grid & Flexbox</a></li>
+        </ul>
+      </section>
+      <section aria-label="Links">
+        <h3>Links</h3>
+        <ul>
+          <li><a href="#demo">Demo</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </section>
+    </div>
+    <p class="legal">© <span id="year"></span> Augusto Mate. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Keep JS minimal and non-essential; the assignment focuses on CSS.
+    // Sets the current year in the footer without relying on any library.
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
